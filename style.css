@@ -10,13 +10,12 @@ body {
   .innerDiv {
     display: flex;
     flex-direction: row;
+    gap: 3px;
   }
 
   button {
     padding: 2px;
   }
-
-
   
   ul {
     list-style-type: none;
