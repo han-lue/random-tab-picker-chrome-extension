@@ -1,0 +1,16 @@
+{
+    "manifest_version": 3,
+    "name": "Random Picker OWN",
+    "description": "MEOW",
+    "version": "1.0.0",
+    "action": {
+      "default_popup": "index.html",
+      "default_icon": "icon.svg"
+    },
+    
+    "permissions": [
+        "tabs",
+        "tabGroups"
+    ]
+  }
+  

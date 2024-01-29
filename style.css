@@ -1,0 +1,38 @@
+body {
+    width: 20rem;
+  }
+
+  .list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .innerDiv {
+    display: flex;
+    flex-direction: row;
+  }
+
+  button {
+    padding: 2px;
+  }
+
+
+  
+  ul {
+    list-style-type: none;
+    padding-inline-start: 0;
+    margin: 1rem 0;
+  }
+  
+  li {
+    padding: 0.25rem;
+    display: flex;
+    flex-direction: row;
+  }
+  li:nth-child(odd) {
+    background: #80808030;
+  }
+  li:nth-child(even) {
+    background: #ffffff;
+  }
+  
