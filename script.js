@@ -1,8 +1,6 @@
 //to do
 //fix bug: if same item is "removed twice" extension wont work, do some error handling to fix it
 
-
-
 let openTabs = [];
 let tabObjects = [];
 
@@ -36,24 +34,20 @@ function manageTabs(tabs) {
 
     img.addEventListener("click", async () => {
 
-      if (tabObjects.length === 1) {
-        alert("You need to leave at least one tab");
+      let indexRandom = tabObjects.map(function(obj) {
+        return obj.index
+      }).indexOf(tabObj.index);
 
+      if (indexRandom === -1) {
+        tabObjects.push(tabObj);
+        titleP.classList.remove('removedItem');
+        titleP.classList.add('item');
       } else {
-        let indexRandom = tabObjects.map(function(obj) {
-          return obj.index
-        }).indexOf(tabObj.index);
-  
-        if (indexRandom === -1) {
-          tabObjects.push(tabObj);
-          titleP.classList.remove('removedItem');
-          titleP.classList.add('item');
-        } else {
-          tabObjects.splice(indexRandom, 1);
-          titleP.classList.remove('item');
-          titleP.classList.add('removedItem');
-        }
+        tabObjects.splice(indexRandom, 1);
+        titleP.classList.remove('item');
+        titleP.classList.add('removedItem');
       }
+    
     });
   }
 }
@@ -66,9 +60,13 @@ const selectRandomBtn = document.getElementById("selectRandom");
 
 selectRandomBtn.addEventListener("click", async () => {
 
-  let randomObj = tabObjects[Math.floor(Math.random() * tabObjects.length)];
+  if (tabObjects.length === 0) {
+    alert("You need to leave at least one tab");
+  } else {
+    let randomObj = tabObjects[Math.floor(Math.random() * tabObjects.length)];
 
-  chrome.tabs.highlight({tabs: randomObj.index})
+    chrome.tabs.highlight({tabs: randomObj.index})
+  }
 });
 
 chrome.tabs.query({ currentWindow: true }).then(manageTabs, onError);
