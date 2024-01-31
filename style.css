@@ -1,37 +1,120 @@
 body {
-    width: 20rem;
-  }
+  width: 20rem;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+}
 
-  .list {
-    display: flex;
-    flex-direction: column;
-  }
+.list {
+  display: flex;
+  flex-direction: column;
+}
 
-  .innerDiv {
-    display: flex;
-    flex-direction: row;
-    gap: 3px;
-  }
+.innerDiv {
+  display: flex;
+  flex-direction: row;
+  gap: 3px;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
 
-  button {
-    padding: 2px;
-  }
+.item {
+  text-decoration: none;
+}
+
+.removedItem {
+  text-decoration: line-through;
+}
+
+.popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* The actual popup */
+.popup .popuptext {
+  visibility: hidden;
+  width: 160px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -80px;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.popup .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+
+button {
+  background-color: blueviolet;
+  color: white;
+  padding: 8px 16px 8px 16px;
+  border-radius: 25px;
+  box-shadow: none;
+  border: none;
+}
+
+button:hover {
+  background-color: purple;
+  cursor: pointer;
+}
+
+img {
+  width: 2rem;
+  aspect-ratio: 1/1;
+  opacity: 0.7;
+}
+
+img:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+
+img:active {
+  opacity: 1;
+  background-color: lightgray;
+  border-radius: 25px;
+}
   
-  ul {
-    list-style-type: none;
-    padding-inline-start: 0;
-    margin: 1rem 0;
-  }
-  
-  li {
-    padding: 0.25rem;
-    display: flex;
-    flex-direction: row;
-  }
-  li:nth-child(odd) {
-    background: #80808030;
-  }
-  li:nth-child(even) {
-    background: #ffffff;
-  }
+ul {
+  list-style-type: none;
+  padding-inline-start: 0;
+  margin: 1rem 0;
+}
+
+li {
+  padding: 0.25rem;
+  display: flex;
+  flex-direction: row;
+}
+li:nth-child(odd) {
+  background: #80808030;
+}
+li:nth-child(even) {
+  background: #ffffff;
+}
   

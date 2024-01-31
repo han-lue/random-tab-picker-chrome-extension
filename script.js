@@ -1,3 +1,8 @@
+//to do
+//fix bug: if same item is "removed twice" extension wont work, do some error handling to fix it
+
+
+
 let openTabs = [];
 let tabObjects = [];
 
@@ -23,25 +28,32 @@ function manageTabs(tabs) {
     let titleP = document.createElement('p');
     titleP.innerText = openTabs[i].title;
     div.appendChild(titleP);
+    titleP.classList.add('item');
 
-    let button = document.createElement('button');
-    let t = document.createTextNode("remove");
-    button.appendChild(t);
+    let img = document.createElement('img');
+    img.src = 'delete.svg';
+    div.appendChild(img);
 
-    div.appendChild(button);
+    img.addEventListener("click", async () => {
 
-    button.addEventListener("click", async () => {
+      if (tabObjects.length === 1) {
+        alert("You need to leave at least one tab");
 
-      //tabObjects.splice(tabObjects.find(a => a.index === tabObj.index) , 1);
-
-      let indexTest = tabObjects.map(function(obj) {
-        return obj.index
-      }).indexOf(tabObj.index);
-    
-      tabObjects.splice(indexTest, 1);
-
-      //let tab = openTabs[Math.floor(Math.random() * openTabs.length)];
-      //chrome.tabs.highlight({tabs: tab.index});
+      } else {
+        let indexRandom = tabObjects.map(function(obj) {
+          return obj.index
+        }).indexOf(tabObj.index);
+  
+        if (indexRandom === -1) {
+          tabObjects.push(tabObj);
+          titleP.classList.remove('removedItem');
+          titleP.classList.add('item');
+        } else {
+          tabObjects.splice(indexRandom, 1);
+          titleP.classList.remove('item');
+          titleP.classList.add('removedItem');
+        }
+      }
     });
   }
 }
@@ -58,13 +70,5 @@ selectRandomBtn.addEventListener("click", async () => {
 
   chrome.tabs.highlight({tabs: randomObj.index})
 });
-
-/*
-const getButton = document.getElementById("getTabs");
-
-getButton.addEventListener("click", async () => {
-
-  chrome.tabs.query({ currentWindow: true }).then(manageTabs, onError);
-}); */
 
 chrome.tabs.query({ currentWindow: true }).then(manageTabs, onError);
