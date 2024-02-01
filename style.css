@@ -2,89 +2,62 @@ body {
   width: 20rem;
   height: auto;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  background-color: white;
+  background-color: #191919;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  padding: 4px;
+}
+
+h1 {
+  color: white;
+  opacity: 0.8;
 }
 
 .list {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 6px;
+  padding: 0px;
 }
 
 .innerDiv {
   display: flex;
   flex-direction: row;
-  gap: 3px;
   width: 100%;
   justify-content: space-between;
+  gap: 4px;
   align-items: center;
+  background-color: #121212;
+  border-radius: 5px;
+  padding: 0px 4px 0px 4px;
 }
 
 .item {
   text-decoration: none;
+  color: white;
+  opacity: 0.8;
 }
 
 .removedItem {
   text-decoration: line-through;
-}
-
-.popup {
-  position: relative;
-  display: inline-block;
-  cursor: pointer;
-}
-
-/* The actual popup */
-.popup .popuptext {
-  visibility: hidden;
-  width: 160px;
-  background-color: #555;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 8px 0;
-  position: absolute;
-  z-index: 1;
-  bottom: 125%;
-  left: 50%;
-  margin-left: -80px;
-}
-
-/* Popup arrow */
-.popup .popuptext::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: #555 transparent transparent transparent;
-}
-
-.popup .show {
-  visibility: visible;
-  -webkit-animation: fadeIn 1s;
-  animation: fadeIn 1s;
-}
-
-button {
-  background-color: blueviolet;
   color: white;
-  padding: 8px 16px 8px 16px;
-  border-radius: 25px;
-  box-shadow: none;
-  border: none;
-}
-
-button:hover {
-  background-color: purple;
-  cursor: pointer;
+  opacity: 0.8;
 }
 
 img {
-  width: 2rem;
+  width: 17px;
   aspect-ratio: 1/1;
   opacity: 0.7;
 }
@@ -96,25 +69,21 @@ img:hover {
 
 img:active {
   opacity: 1;
-  background-color: lightgray;
+  background-color: #f6f6f6;
   border-radius: 25px;
 }
-  
-ul {
-  list-style-type: none;
-  padding-inline-start: 0;
-  margin: 1rem 0;
+
+button {
+  background-color: darkslateblue;
+  color: white;
+  opacity: 0.9;
+  padding: 8px 16px 8px 16px;
+  border-radius: 25px;
+  box-shadow: none;
+  border: none;
 }
 
-li {
-  padding: 0.25rem;
-  display: flex;
-  flex-direction: row;
+button:hover {
+  background-color: slateblue;
+  cursor: pointer;
 }
-li:nth-child(odd) {
-  background: #80808030;
-}
-li:nth-child(even) {
-  background: #ffffff;
-}
-  
