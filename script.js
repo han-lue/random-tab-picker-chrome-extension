@@ -1,6 +1,3 @@
-//to do
-//fix bug: if same item is "removed twice" extension wont work, do some error handling to fix it
-
 let openTabs = [];
 let tabObjects = [];
 
@@ -47,7 +44,6 @@ function manageTabs(tabs) {
         titleP.classList.remove('item');
         titleP.classList.add('removedItem');
       }
-    
     });
   }
 }

@@ -4,13 +4,16 @@
     "description": "MEOW",
     "version": "1.0.0",
     "action": {
-      "default_popup": "index.html",
-      "default_icon": "icon.svg"
+      "default_popup": "index.html"
+    },
+    "icons": {
+      "16": "icon16.png",
+      "48": "icon48.png",
+      "128": "icon128.png" 
     },
     
     "permissions": [
-        "tabs",
-        "tabGroups"
+        "tabs"
     ]
   }
   
