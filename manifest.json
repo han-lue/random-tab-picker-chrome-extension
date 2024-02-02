@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
-    "name": "Random Picker OWN",
-    "description": "MEOW",
+    "name": "Random Tab Picker",
+    "description": "Indecisive on what to watch/buy/do? Open them in different tabs and let this extension pick a random one for you.",
     "version": "1.0.0",
     "action": {
       "default_popup": "index.html"
