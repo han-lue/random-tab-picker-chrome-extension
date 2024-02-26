@@ -77,10 +77,15 @@ img:active {
   border-radius: 25px;
 }
 
+.button-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
 button {
   background-color: darkslateblue;
   color: white;
-  width: 40%;
   opacity: 0.9;
   padding: 8px 16px 8px 16px;
   border-radius: 25px;

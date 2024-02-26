@@ -1,9 +1,10 @@
 let openTabs = [];
 let tabObjects = [];
+let tabGroup = [];
 
 function manageTabs(tabs) {
 
-  openTabs = tabs.slice(0);
+  openTabs = tabs.slice();
   
   let list = document.getElementById("list");
 
@@ -11,7 +12,8 @@ function manageTabs(tabs) {
     
     const tabObj = { 
       index: i, 
-      url: openTabs[i].url
+      url: openTabs[i].url,
+      id: openTabs[i].id
     };
 
     tabObjects.push(tabObj);
@@ -39,6 +41,7 @@ function manageTabs(tabs) {
         tabObjects.push(tabObj);
         titleP.classList.remove('removedItem');
         titleP.classList.add('item');
+      
       } else {
         tabObjects.splice(indexRandom, 1);
         titleP.classList.remove('item');
@@ -52,17 +55,64 @@ function onError(error) {
   console.error(`Error: ${error}`);
 }
 
-const selectRandomBtn = document.getElementById("selectRandom");
+const selectOneBtn = document.getElementById("selectOne");
 
-selectRandomBtn.addEventListener("click", async () => {
+selectOneBtn.addEventListener("click", async () => {
 
   if (tabObjects.length === 0) {
-    alert("You need to leave at least one tab");
+    alert("You need to leave at least one tab in the list");
+  
   } else {
-    let randomObj = tabObjects[Math.floor(Math.random() * tabObjects.length)];
-
+    const randomObj = tabObjects[Math.floor(Math.random() * tabObjects.length)];
     chrome.tabs.highlight({tabs: randomObj.index})
   }
 });
 
+const selectMultipleBtn = document.getElementById("selectMultiple");
+
+selectMultipleBtn.addEventListener("click", async () =>{
+
+  const number = Number(window.prompt("How many tabs do hou want to select?", "2"));
+
+  if(number >= openTabs.length) {
+    alert("You must select a number smaller than the amount of open tabs")
+  
+  } else if(number === 1) {
+    const randomObj = tabObjects[Math.floor(Math.random() * tabObjects.length)];
+    chrome.tabs.highlight({tabs: randomObj.index})
+  
+  } else {
+    let copyTabObjects = tabObjects.slice();
+
+    for (let i = 1; i <= number; i++) {
+
+      let index = Math.floor(Math.random() * copyTabObjects.length);
+
+      const randomTabObj = copyTabObjects[index];
+      tabGroup.push(randomTabObj);
+
+      copyTabObjects.splice(index, 1);
+    }
+
+    const tabIds = tabGroup.map(({ id }) => id);
+
+    if(tabIds.length) {
+      const group = await chrome.tabs.group({tabIds});
+      await chrome.tabGroups.update(group, { title: 'SELECTED' });  
+    }
+  }
+});
+
+
 chrome.tabs.query({ currentWindow: true }).then(manageTabs, onError);
+
+
+
+/* 
+todo
+
+fix ui
+
+change color & name of the group 
+move group to the end of the tabs
+*/
