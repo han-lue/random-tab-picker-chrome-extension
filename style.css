@@ -79,15 +79,23 @@ img:active {
 
 .button-container {
   display: flex;
-  width: 100%;
+  width: 75%;
   justify-content: space-between;
 }
 
-button {
+#selectOne {
+  background-color: #f6f6f6;
+  color: #121212
+}
+
+#selectMultiple {
   background-color: darkslateblue;
-  color: white;
-  opacity: 0.9;
-  padding: 8px 16px 8px 16px;
+  color: #f6f6f6;
+}
+
+button {
+  opacity: 1;
+  padding: 10px 16px 10px 16px;
   border-radius: 25px;
   box-shadow: none;
   border: none;
@@ -95,6 +103,6 @@ button {
 }
 
 button:hover {
-  background-color: slateblue;
+  opacity: 0.85;
   cursor: pointer;
 }

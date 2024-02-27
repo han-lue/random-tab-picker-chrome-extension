@@ -55,10 +55,7 @@ function onError(error) {
   console.error(`Error: ${error}`);
 }
 
-const selectOneBtn = document.getElementById("selectOne");
-
-selectOneBtn.addEventListener("click", async () => {
-
+function getOneTab() {
   if (tabObjects.length === 0) {
     alert("You need to leave at least one tab in the list");
   
@@ -66,20 +63,15 @@ selectOneBtn.addEventListener("click", async () => {
     const randomObj = tabObjects[Math.floor(Math.random() * tabObjects.length)];
     chrome.tabs.highlight({tabs: randomObj.index})
   }
-});
+}
 
-const selectMultipleBtn = document.getElementById("selectMultiple");
-
-selectMultipleBtn.addEventListener("click", async () =>{
-
-  const number = Number(window.prompt("How many tabs do hou want to select?", "2"));
+async function getMultipleTabs(number) {
 
   if(number >= openTabs.length) {
     alert("You must select a number smaller than the amount of open tabs")
   
   } else if(number === 1) {
-    const randomObj = tabObjects[Math.floor(Math.random() * tabObjects.length)];
-    chrome.tabs.highlight({tabs: randomObj.index})
+    getOneTab();
   
   } else {
     let copyTabObjects = tabObjects.slice();
@@ -96,23 +88,31 @@ selectMultipleBtn.addEventListener("click", async () =>{
 
     const tabIds = tabGroup.map(({ id }) => id);
 
-    if(tabIds.length) {
-      const group = await chrome.tabs.group({tabIds});
-      await chrome.tabGroups.update(group, { title: 'SELECTED' });  
-    }
+    const group = await chrome.tabs.group({tabIds});
+    await chrome.tabGroups.update(group, { color: 'purple', title: 'SELECTED' });  
+    await chrome.tabGroups.move(group, {index: -1});
+
+    const firstTab = await chrome.tabs.get(tabIds[0]);
+    await chrome.tabs.highlight({tabs: firstTab.index});
   }
+
+}
+
+const selectOneBtn = document.getElementById("selectOne");
+
+selectOneBtn.addEventListener("click", async () => {
+  getOneTab()
+  
 });
 
+const selectMultipleBtn = document.getElementById("selectMultiple");
+
+selectMultipleBtn.addEventListener("click", async () =>{
+
+  const number = Number(window.prompt("How many tabs do hou want to select?", "2"));
+
+  getMultipleTabs(number);
+
+});
 
 chrome.tabs.query({ currentWindow: true }).then(manageTabs, onError);
-
-
-
-/* 
-todo
-
-fix ui
-
-change color & name of the group 
-move group to the end of the tabs
-*/
