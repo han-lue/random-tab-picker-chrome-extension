@@ -68,7 +68,7 @@ function getOneTab() {
 async function getMultipleTabs(number) {
 
   if(number >= openTabs.length) {
-    alert("You must select a number smaller than the amount of open tabs")
+    alert("You must select a number less than the open tabs")
   
   } else if(number === 1) {
     getOneTab();
