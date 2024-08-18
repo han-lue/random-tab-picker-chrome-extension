@@ -5,7 +5,7 @@ body {
   flex-direction: column;
   justify-content: start;
   background-color: #121212;
-  padding: 8px;
+  padding: 10px;
 }
 
 .container {
@@ -15,7 +15,7 @@ body {
   flex-direction: column;
   justify-content: start;
   align-items: center;
-  gap: 16px;
+  gap: 1px;
 }
 
 h1 {
@@ -39,23 +39,32 @@ h1 {
   justify-content: space-between;
   gap: 4px;
   align-items: center;
-  background-color: #191919;
-  border-radius: 5px;
-  padding: 0px 6px 0px 6px;
+  background-color: #212121;
+  border-radius: 8px;
+  padding-left: 8px;
+  padding-right: 8px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.innerDiv:hover {
+  cursor: pointer;
+  opacity: 0.8;
 }
 
 .item {
   text-decoration: none;
-  font-size: 16px;
+  font-size: 14px;
   color: white;
-  opacity: 0.8;
+  opacity: 0.9;
+  text-overflow: ellipsis;
 }
 
 .removedItem {
   text-decoration: line-through;
-  font-size: 16px;
-  color: white;
-  opacity: 0.8;
+  font-size: 14px;
+  color: red;
+  opacity: 0.9;
+  text-overflow: ellipsis;
 }
 
 img {
@@ -83,6 +92,11 @@ img:active {
   justify-content: space-between;
 }
 
+.available-tabs {
+  color: white;
+  font-size: 16px;
+}
+
 #selectOne {
   background-color: #f6f6f6;
   color: #121212
@@ -100,6 +114,7 @@ button {
   box-shadow: none;
   border: none;
   font-weight: bold;
+  font-size: 14px;
 }
 
 button:hover {

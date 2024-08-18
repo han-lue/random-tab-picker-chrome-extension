@@ -8,6 +8,11 @@ function manageTabs(tabs) {
   
   let list = document.getElementById("list");
 
+  let span = document.getElementById("span");
+
+  span.textContent = openTabs.length;
+
+
   for (let i = 0; i < openTabs.length; i++) {
     
     const tabObj = { 
@@ -27,11 +32,11 @@ function manageTabs(tabs) {
     div.appendChild(titleP);
     titleP.classList.add('item');
 
-    let img = document.createElement('img');
+    /*let img = document.createElement('img');
     img.src = 'delete.svg';
-    div.appendChild(img);
+    div.appendChild(img); */
 
-    img.addEventListener("click", async () => {
+    div.addEventListener("click", async () => {
 
       let indexRandom = tabObjects.map(function(obj) {
         return obj.index
@@ -47,8 +52,12 @@ function manageTabs(tabs) {
         titleP.classList.remove('item');
         titleP.classList.add('removedItem');
       }
+
+      span.textContent = tabObjects.length;
     });
-  }
+
+    
+  }  
 }
 
 function onError(error) {
