@@ -11,7 +11,9 @@ function manageTabs(tabs) {
   let availableTabsText = document.getElementById("availableTabs");
   let warningMessage = document.getElementById("warningMessage");
   let span = document.getElementById("span");
-
+  let buttonOne = document.getElementById("selectOne");
+  let buttonMultiple = document.getElementById("selectMultiple");
+  
   span.textContent = openTabs.length;
 
   availableTabsText.classList.add('visible');
@@ -64,12 +66,18 @@ function manageTabs(tabs) {
         warningMessage.classList.add('visible');
         warningMessage.classList.remove('hidden');
 
+        buttonOne.setAttribute("disabled", "");
+        buttonMultiple.setAttribute("disabled", "");
+
       } else {
         availableTabsText.classList.add('visible');
         availableTabsText.classList.remove('hidden');
 
         warningMessage.classList.add('hidden');
         warningMessage.classList.remove('visible');
+
+        buttonOne.removeAttribute("disabled", "");
+        buttonMultiple.removeAttribute("disabled", "");
 
         span.textContent = tabObjects.length;
       }
@@ -82,19 +90,14 @@ function onError(error) {
 }
 
 function getOneTab() {
-  if (tabObjects.length === 0) {
-    alert("You need to leave at least one tab in the list");
-  
-  } else {
     const randomObj = tabObjects[Math.floor(Math.random() * tabObjects.length)];
     chrome.tabs.highlight({tabs: randomObj.index})
-  }
 }
 
 async function getMultipleTabs(number) {
 
   if(number >= openTabs.length) {
-    alert("You must select a number less than the open tabs")
+    alert("You must select a number less than the available tabs")
   
   } else if(number === 1) {
     getOneTab();
