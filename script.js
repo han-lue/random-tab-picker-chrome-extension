@@ -8,10 +8,14 @@ function manageTabs(tabs) {
   
   let list = document.getElementById("list");
 
+  let availableTabsText = document.getElementById("availableTabs");
+  let warningMessage = document.getElementById("warningMessage");
   let span = document.getElementById("span");
 
   span.textContent = openTabs.length;
 
+  availableTabsText.classList.add('visible');
+  warningMessage.classList.add('hidden');
 
   for (let i = 0; i < openTabs.length; i++) {
     
@@ -53,10 +57,23 @@ function manageTabs(tabs) {
         titleP.classList.add('removedItem');
       }
 
-      span.textContent = tabObjects.length;
-    });
+      if (tabObjects.length === 0) {
+        availableTabsText.classList.add('hidden');
+        availableTabsText.classList.remove('visible');
 
-    
+        warningMessage.classList.add('visible');
+        warningMessage.classList.remove('hidden');
+
+      } else {
+        availableTabsText.classList.add('visible');
+        availableTabsText.classList.remove('hidden');
+
+        warningMessage.classList.add('hidden');
+        warningMessage.classList.remove('visible');
+
+        span.textContent = tabObjects.length;
+      }
+    });
   }  
 }
 

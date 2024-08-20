@@ -4,7 +4,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: start;
-  background-color: #121212;
+  background-color: #dfdfdf;
   padding: 8px 4px 8px 4px;
 }
 
@@ -36,9 +36,10 @@ h1 {
 .innerDiv {
   width: 100%;
   align-items: center;
-  background-color: #212121;
+  background-color: #efefef;
   border-radius: 8px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  font-weight: 500;
 }
 
 .innerDiv:hover {
@@ -49,7 +50,7 @@ h1 {
 .item {
   text-decoration: none;
   font-size: 14px;
-  color: white;
+  color: black;
   opacity: 0.9;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -61,13 +62,65 @@ h1 {
 .removedItem {
   text-decoration: line-through;
   font-size: 14px;
-  color: white;
+  color: black;
   opacity: 0.3;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
   padding-left: 8px;
   padding-right: 8px;
+}
+
+.button-container {
+  display: flex;
+  width: 80%;
+  justify-content: space-between;
+}
+
+.available-tabs {
+  color: black;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.warning-message {
+  color: red;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.visible {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+#selectOne {
+  background-color: #dfdfdf;
+  color: #3333c2;
+  border: 2px solid #3333c2;
+}
+
+#selectMultiple {
+  background-color: #3333c2;
+  color: #f6f6f6;
+  border: none;
+}
+
+button {
+  opacity: 1;
+  padding: 10px 16px 10px 16px;
+  border-radius: 25px;
+  box-shadow: none;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+button:hover {
+  opacity: 0.85;
+  cursor: pointer;
 }
 
 img {
@@ -87,40 +140,4 @@ img:active {
   opacity: 1;
   background-color: lightslategray;
   border-radius: 25px;
-}
-
-.button-container {
-  display: flex;
-  width: 75%;
-  justify-content: space-between;
-}
-
-.available-tabs {
-  color: white;
-  font-size: 16px;
-}
-
-#selectOne {
-  background-color: #f6f6f6;
-  color: #121212
-}
-
-#selectMultiple {
-  background-color: darkslateblue;
-  color: #f6f6f6;
-}
-
-button {
-  opacity: 1;
-  padding: 10px 16px 10px 16px;
-  border-radius: 25px;
-  box-shadow: none;
-  border: none;
-  font-weight: bold;
-  font-size: 14px;
-}
-
-button:hover {
-  opacity: 0.85;
-  cursor: pointer;
 }
