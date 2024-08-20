@@ -30,17 +30,13 @@ function manageTabs(tabs) {
     tabObjects.push(tabObj);
 
     let div = document.createElement('div');
-    div.classList.add("innerDiv");
+    div.classList.add("inner-div");
     list.appendChild(div);
   
     let titleP = document.createElement('p');
     titleP.innerText = openTabs[i].title;
     div.appendChild(titleP);
     titleP.classList.add('item');
-
-    /*let img = document.createElement('img');
-    img.src = 'delete.svg';
-    div.appendChild(img); */
 
     div.addEventListener("click", async () => {
 
@@ -50,13 +46,15 @@ function manageTabs(tabs) {
 
       if (indexRandom === -1) {
         tabObjects.push(tabObj);
-        titleP.classList.remove('removedItem');
+        titleP.classList.remove('removed-item');
+        div.classList.remove("inner-div-removed");
         titleP.classList.add('item');
       
       } else {
         tabObjects.splice(indexRandom, 1);
+        div.classList.add("inner-div-removed");
         titleP.classList.remove('item');
-        titleP.classList.add('removedItem');
+        titleP.classList.add('removed-item');
       }
 
       if (tabObjects.length === 0) {
