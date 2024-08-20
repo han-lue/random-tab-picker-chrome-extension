@@ -103,6 +103,11 @@ h1 {
   border: 2px solid #3333c2;
 }
 
+#selectOne:hover {
+  border: 2px solid #3333c2;
+  background-color: #d6d6d6;
+}
+
 #selectMultiple {
   background-color: #3333c2;
   color: #f6f6f6;
