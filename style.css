@@ -8,7 +8,7 @@ body {
   padding: 8px 4px 8px 4px;
 }
 
-.container {
+.main-container {
   display: flex;
   width: 320px;
   height: 100%;
@@ -18,7 +18,7 @@ body {
   gap: 1px;
 }
 
-.list {
+.tab-list {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,7 +28,7 @@ body {
   overflow: auto;
 }
 
-.inner-div {
+.tab-list-item {
   width: 100%;
   align-items: center;
   background-color: #efefef;
@@ -38,16 +38,16 @@ body {
   user-select: none;
 }
 
-.inner-div-removed {
+.tab-list-item-removed {
   opacity: 0.5;
 }
 
-.inner-div:hover {
+.tab-list-item:hover {
   cursor: pointer;
   opacity: 0.7;
 }
 
-.item {
+.tab-list-item-title {
   text-decoration: none;
   font-size: 14px;
   color: black;
@@ -59,7 +59,7 @@ body {
   padding-right: 8px;
 }
 
-.removed-item {
+.tab-list-item-title-removed {
   text-decoration: line-through;
   font-size: 14px;
   color: black;
@@ -77,41 +77,25 @@ body {
   justify-content: space-between;
 }
 
-.available-tabs {
+.message {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.message-info {
   color: black;
-  font-size: 16px;
-  font-weight: 500;
 }
 
-.warning-message {
+.message-warning {
   color: red;
-  font-size: 16px;
-  font-weight: 500;
 }
 
-.visible {
+.message-visible {
   display: block;
 }
 
-.hidden {
+.message-hidden {
   display: none;
-}
-
-#selectOne {
-  background-color: #dfdfdf;
-  color: #3333c2;
-  border: 2px solid #3333c2;
-}
-
-#selectOne:hover {
-  border: 2px solid #3333c2;
-  background-color: #d6d6d6;
-}
-
-#selectMultiple {
-  background-color: #3333c2;
-  color: #f6f6f6;
-  border: none;
 }
 
 button {
@@ -126,4 +110,24 @@ button {
 button:hover {
   opacity: 0.85;
   cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+.button-pick-one {
+  background-color: #dfdfdf;
+  color: #3333c2;
+  border: 2px solid #3333c2;
+}
+
+.button-pick-one:hover {
+  background-color: #d6d6d6;
+}
+
+.button-pick-multiple {
+  background-color: #3333c2;
+  color: #f6f6f6;
+  border: none;
 }

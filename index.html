@@ -7,14 +7,16 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <div class="container">
+    <div class="main-container">
       <div class="button-container">
-        <button id="selectOne">Pick One</button>
-        <button id="selectMultiple">Pick Multiple</button>
+        <button id="buttonPickOne" class="button-pick-one">Pick One</button>
+        <button id="buttonPickMultiple" class="button-pick-multiple">Pick Multiple</button>
       </div>
-      <p id="availableTabs" class="available-tabs"> A selection will be made between <span id="span"></span> tabs</p>
-      <p id="warningMessage" class="warning-message"> You need to leave at least one tab selected</p>
-      <div id="list" class="list"></div>
+
+      <p id="messageInfo" class="message message-info"> A selection will be made between <span id="messageTabCount"></span> tabs</p>
+      <p id="messageWarning" class="message message-warning"> You need to leave at least one tab selected</p>
+
+      <div id="tabList" class="tab-list"></div>
     </div>
     <script src="./script.js" type="module"></script>
   </body>

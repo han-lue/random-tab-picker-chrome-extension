@@ -2,22 +2,23 @@ let openTabs = [];
 let tabObjects = [];
 let tabGroup = [];
 
+let tabList = document.getElementById("tabList");
+
+let messageInfo = document.getElementById("messageInfo");
+let messageWarning = document.getElementById("messageWarning");
+let messageTabCount = document.getElementById("messageTabCount");
+
+let buttonPickOne = document.getElementById("buttonPickOne");
+let buttonPickMultiple = document.getElementById("buttonPickMultiple");
+
 function manageTabs(tabs) {
 
   openTabs = tabs.slice();
   
-  let list = document.getElementById("list");
+  messageTabCount.textContent = openTabs.length;
 
-  let availableTabsText = document.getElementById("availableTabs");
-  let warningMessage = document.getElementById("warningMessage");
-  let span = document.getElementById("span");
-  let buttonOne = document.getElementById("selectOne");
-  let buttonMultiple = document.getElementById("selectMultiple");
-  
-  span.textContent = openTabs.length;
-
-  availableTabsText.classList.add('visible');
-  warningMessage.classList.add('hidden');
+  messageInfo.classList.add('message-visible');
+  messageWarning.classList.add('message-hidden');
 
   for (let i = 0; i < openTabs.length; i++) {
     
@@ -29,16 +30,16 @@ function manageTabs(tabs) {
 
     tabObjects.push(tabObj);
 
-    let div = document.createElement('div');
-    div.classList.add("inner-div");
-    list.appendChild(div);
+    let tabListItem = document.createElement('div');
+    tabListItem.classList.add("tab-list-item");
+    tabList.appendChild(tabListItem);
   
-    let titleP = document.createElement('p');
-    titleP.innerText = openTabs[i].title;
-    div.appendChild(titleP);
-    titleP.classList.add('item');
+    let tabListItemTitle = document.createElement('p');
+    tabListItemTitle.innerText = openTabs[i].title;
+    tabListItem.appendChild(tabListItemTitle);
+    tabListItemTitle.classList.add('tab-list-item-title');
 
-    div.addEventListener("click", async () => {
+    tabListItem.addEventListener("click", async () => {
 
       let indexRandom = tabObjects.map(function(obj) {
         return obj.index
@@ -46,38 +47,38 @@ function manageTabs(tabs) {
 
       if (indexRandom === -1) {
         tabObjects.push(tabObj);
-        titleP.classList.remove('removed-item');
-        div.classList.remove("inner-div-removed");
-        titleP.classList.add('item');
+        tabListItemTitle.classList.remove('tab-list-item-title-removed');
+        tabListItem.classList.remove("tab-list-item-removed");
+        tabListItemTitle.classList.add('tab-list-item-title');
       
       } else {
         tabObjects.splice(indexRandom, 1);
-        div.classList.add("inner-div-removed");
-        titleP.classList.remove('item');
-        titleP.classList.add('removed-item');
+        tabListItem.classList.add("tab-list-item-removed");
+        tabListItemTitle.classList.remove('tab-list-item-title');
+        tabListItemTitle.classList.add('tab-list-item-title-removed');
       }
 
       if (tabObjects.length === 0) {
-        availableTabsText.classList.add('hidden');
-        availableTabsText.classList.remove('visible');
+        messageInfo.classList.add('message-hidden');
+        messageInfo.classList.remove('message-visible');
 
-        warningMessage.classList.add('visible');
-        warningMessage.classList.remove('hidden');
+        messageWarning.classList.add('message-visible');
+        messageWarning.classList.remove('message-hidden');
 
-        buttonOne.setAttribute("disabled", "");
-        buttonMultiple.setAttribute("disabled", "");
+        buttonPickOne.setAttribute("disabled", "");
+        buttonPickMultiple.setAttribute("disabled", "");
 
       } else {
-        availableTabsText.classList.add('visible');
-        availableTabsText.classList.remove('hidden');
+        messageInfo.classList.add('message-visible');
+        messageInfo.classList.remove('message-hidden');
 
-        warningMessage.classList.add('hidden');
-        warningMessage.classList.remove('visible');
+        messageWarning.classList.add('message-hidden');
+        messageWarning.classList.remove('message-visible');
 
-        buttonOne.removeAttribute("disabled", "");
-        buttonMultiple.removeAttribute("disabled", "");
+        buttonPickOne.removeAttribute("disabled", "");
+        buttonPickMultiple.removeAttribute("disabled", "");
 
-        span.textContent = tabObjects.length;
+        messageTabCount.textContent = tabObjects.length;
       }
     });
   }  
@@ -125,16 +126,13 @@ async function getMultipleTabs(number) {
 
 }
 
-const selectOneBtn = document.getElementById("selectOne");
-
-selectOneBtn.addEventListener("click", async () => {
+buttonPickOne.addEventListener("click", async () => {
   getOneTab()
   
 });
 
-const selectMultipleBtn = document.getElementById("selectMultiple");
 
-selectMultipleBtn.addEventListener("click", async () =>{
+buttonPickMultiple.addEventListener("click", async () =>{
 
   const number = Number(window.prompt("How many tabs do hou want to select?", "2"));
 
