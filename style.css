@@ -4,7 +4,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: start;
-  background-color: #dfdfdf;
+  background-color: #efefef;
   padding: 8px 4px 8px 4px;
 }
 
@@ -28,26 +28,26 @@ body {
   overflow: auto;
 }
 
-.tab-list-item {
+.tab-list__item {
   width: 100%;
   align-items: center;
-  background-color: #efefef;
+  background-color: #dfdfdf;
   border-radius: 8px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   font-weight: 500;
   user-select: none;
 }
 
-.tab-list-item-removed {
+.tab-list__item--removed {
   opacity: 0.5;
 }
 
-.tab-list-item:hover {
+.tab-list__item:hover {
   cursor: pointer;
   opacity: 0.7;
 }
 
-.tab-list-item-title {
+.tab-list__item__title {
   text-decoration: none;
   font-size: 14px;
   color: black;
@@ -59,7 +59,7 @@ body {
   padding-right: 8px;
 }
 
-.tab-list-item-title-removed {
+.tab-list__item__title--removed {
   text-decoration: line-through;
   font-size: 14px;
   color: black;
@@ -82,19 +82,19 @@ body {
   font-weight: 500;
 }
 
-.message-info {
+.message--info {
   color: black;
 }
 
-.message-warning {
+.message--warning {
   color: red;
 }
 
-.message-visible {
+.message--visible {
   display: block;
 }
 
-.message-hidden {
+.message--hidden {
   display: none;
 }
 
@@ -116,17 +116,17 @@ button:disabled {
   cursor: not-allowed;
 }
 
-.button-pick-one {
-  background-color: #dfdfdf;
+.button__pick-one {
+  background-color: #efefef;
   color: #3333c2;
   border: 2px solid #3333c2;
 }
 
-.button-pick-one:hover {
-  background-color: #d6d6d6;
+.button__pick-one:hover {
+  background-color: #dfdfdf;
 }
 
-.button-pick-multiple {
+.button__pick-multiple {
   background-color: #3333c2;
   color: #f6f6f6;
   border: none;

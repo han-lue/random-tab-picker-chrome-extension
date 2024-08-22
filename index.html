@@ -9,12 +9,12 @@
   <body>
     <div class="main-container">
       <div class="button-container">
-        <button id="buttonPickOne" class="button-pick-one">Pick One</button>
-        <button id="buttonPickMultiple" class="button-pick-multiple">Pick Multiple</button>
+        <button id="buttonPickOne" class="button__pick-one">Pick One</button>
+        <button id="buttonPickMultiple" class="button__pick-multiple">Pick Multiple</button>
       </div>
 
-      <p id="messageInfo" class="message message-info"> A selection will be made between <span id="messageTabCount"></span> tabs</p>
-      <p id="messageWarning" class="message message-warning"> You need to leave at least one tab selected</p>
+      <p id="messageInfo" class="message message--info message--visible"> A selection will be made between <span id="messageTabCount"></span> tabs</p>
+      <p id="messageWarning" class="message message--warning message--hidden"> You need to leave at least one tab selected</p>
 
       <div id="tabList" class="tab-list"></div>
     </div>

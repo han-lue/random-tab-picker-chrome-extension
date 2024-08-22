@@ -11,14 +11,12 @@ let messageTabCount = document.getElementById("messageTabCount");
 let buttonPickOne = document.getElementById("buttonPickOne");
 let buttonPickMultiple = document.getElementById("buttonPickMultiple");
 
+
 function manageTabs(tabs) {
 
   openTabs = tabs.slice();
   
   messageTabCount.textContent = openTabs.length;
-
-  messageInfo.classList.add('message-visible');
-  messageWarning.classList.add('message-hidden');
 
   for (let i = 0; i < openTabs.length; i++) {
     
@@ -30,14 +28,16 @@ function manageTabs(tabs) {
 
     tabObjects.push(tabObj);
 
+    chrome.action.setBadgeText({text: tabObjects.length.toString()});
+
     let tabListItem = document.createElement('div');
-    tabListItem.classList.add("tab-list-item");
+    tabListItem.classList.add("tab-list__item");
     tabList.appendChild(tabListItem);
   
     let tabListItemTitle = document.createElement('p');
     tabListItemTitle.innerText = openTabs[i].title;
     tabListItem.appendChild(tabListItemTitle);
-    tabListItemTitle.classList.add('tab-list-item-title');
+    tabListItemTitle.classList.add('tab-list__item__title');
 
     tabListItem.addEventListener("click", async () => {
 
@@ -47,33 +47,31 @@ function manageTabs(tabs) {
 
       if (indexRandom === -1) {
         tabObjects.push(tabObj);
-        tabListItemTitle.classList.remove('tab-list-item-title-removed');
-        tabListItem.classList.remove("tab-list-item-removed");
-        tabListItemTitle.classList.add('tab-list-item-title');
+
+        tabListItemTitle.classList.remove('tab-list__item__title--removed');
+        tabListItem.classList.remove("tab-list__item--removed");
       
       } else {
         tabObjects.splice(indexRandom, 1);
-        tabListItem.classList.add("tab-list-item-removed");
-        tabListItemTitle.classList.remove('tab-list-item-title');
-        tabListItemTitle.classList.add('tab-list-item-title-removed');
+
+        tabListItem.classList.add("tab-list__item--removed");
+        tabListItemTitle.classList.add('tab-list__item__title--removed');
       }
 
       if (tabObjects.length === 0) {
-        messageInfo.classList.add('message-hidden');
-        messageInfo.classList.remove('message-visible');
+        messageInfo.classList.add('message--hidden');
 
-        messageWarning.classList.add('message-visible');
-        messageWarning.classList.remove('message-hidden');
+        messageWarning.classList.add('message--visible');
+        messageWarning.classList.remove('message--hidden');
 
         buttonPickOne.setAttribute("disabled", "");
         buttonPickMultiple.setAttribute("disabled", "");
 
       } else {
-        messageInfo.classList.add('message-visible');
-        messageInfo.classList.remove('message-hidden');
+        messageInfo.classList.remove('message--hidden');
 
-        messageWarning.classList.add('message-hidden');
-        messageWarning.classList.remove('message-visible');
+        messageWarning.classList.add('message--hidden');
+        messageWarning.classList.remove('message--visible');
 
         buttonPickOne.removeAttribute("disabled", "");
         buttonPickMultiple.removeAttribute("disabled", "");
