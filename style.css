@@ -117,13 +117,13 @@ button:disabled {
 }
 
 .button__pick-one {
-  background-color: #efefef;
+  background-color: #fefefe;
   color: #3333c2;
   border: 2px solid #3333c2;
 }
 
 .button__pick-one:hover {
-  background-color: #dfdfdf;
+  background-color: #ededed;
 }
 
 .button__pick-multiple {
