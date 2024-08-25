@@ -86,7 +86,11 @@ function pickOneTab() {
 
 // Pick multiple random tabs, create a tab group and switch to a tab in the group
 async function pickMultipleTabs(numberToPick) {
-  if(numberToPick >= selectedTabs.length) {
+
+  if(numberToPick === 0) {
+    return;
+    
+  } else if(numberToPick >= selectedTabs.length) {
     alert("You must choose a number smaller than the selected tabs")
   
   } else if(numberToPick === 1) {
@@ -120,7 +124,7 @@ buttonPickOne.addEventListener("click", async () => {
 
 // Handle "pick multiple" button click
 buttonPickMultiple.addEventListener("click", async () =>{
-  const numberToPick = Number(window.prompt("How many tabs do hou want to select?", "2")); // User input on how many random tabs to pick
+  const numberToPick = Number(window.prompt("How many random tabs should be picked?", "2")); // User input on how many random tabs to pick
   pickMultipleTabs(numberToPick);
 });
 
