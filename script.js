@@ -1,7 +1,6 @@
 let selectedTabs = []; // Array of tabs to do the random pick
 
 // Get the necessary HTML elements
-const mainContainer = document.getElementById("mainContainer");
 const tabList = document.getElementById("tabList");
 const messageInfo = document.getElementById("messageInfo");
 const messageWarning = document.getElementById("messageWarning");
@@ -79,36 +78,6 @@ function manageTabs(tabs) {
   }  
 }
 
-// Create a popup and ask user to how many tabs to select
-async function numberToPickPopUp() {
-  const numberPopup = document.createElement("div");
-  numberPopup.classList.add("popup__pick-number--container");
-
-  const testText = document.createElement("p");
-  testText.innerText = "How many random tabs should be selected?"
-  numberPopup.appendChild(testText);
-
-  const inputField = document.createElement("input");
-  inputField.setAttribute("type", "number");
-  numberPopup.appendChild(inputField);
-
-  const buttonContainer = document.createElement("div");
-  buttonContainer.classList.add("popup__pick-number--button-container");
-
-  const cancelButton = document.createElement("button");
-  cancelButton.innerText = "Cancel"
-  const confirmButton = document.createElement("button");
-  confirmButton.innerText = "Confirm"
-
-
-  buttonContainer.appendChild(cancelButton);
-  buttonContainer.appendChild(confirmButton);
-
-  numberPopup.appendChild(buttonContainer);
-
-  mainContainer.appendChild(numberPopup);
-}
-
 // Pick a random tab and switch to it
 function pickOneTab() {
     const randomTab = selectedTabs[Math.floor(Math.random() * selectedTabs.length)];
@@ -155,10 +124,8 @@ buttonPickOne.addEventListener("click", async () => {
 
 // Handle "pick multiple" button click
 buttonPickMultiple.addEventListener("click", async () =>{
-  //const numberToPick = Number(window.prompt("How many random tabs should be picked?", "2")); // User input on how many random tabs to pick
-  //pickMultipleTabs(numberToPick);
-  
-  numberToPickPopUp();
+  const numberToPick = Number(window.prompt("How many random tabs should be picked?", "2")); // User input on how many random tabs to pick
+  pickMultipleTabs(numberToPick);
 });
 
 // Handle error
